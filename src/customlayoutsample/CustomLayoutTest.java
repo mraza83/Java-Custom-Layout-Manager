@@ -25,37 +25,46 @@ public class CustomLayoutTest extends javax.swing.JFrame {
     private static class Marker extends JToggleButton
     {
 
-        public Marker() {
-            super();
-        }
-
-        public Marker(Icon icon) {
-            super(icon);
-        }
-
-        public Marker(Icon icon, boolean selected) {
-            super(icon, selected);
-        }
-
+//        public Marker() {
+//            super();
+//            setUI(new MarkerUI());
+//        }
+//
+//        public Marker(Icon icon) {
+//            super(icon);
+//            setUI(new MarkerUI());
+//        }
+//
+//        public Marker(Icon icon, boolean selected) {
+//            super(icon, selected);
+//            setUI(new MarkerUI());
+//        }
+//
         public Marker(String text) {
-            //super(text);
+            super(text);
+            System.out.println("UI CLASS: " + getUI().getClass().getName());
+            setUI(new MarkerUI());
         }
-
-        public Marker(String text, boolean selected) {
-            super(text, selected);
-        }
-
-        public Marker(Action a) {
-            super(a);
-        }
-
-        public Marker(String text, Icon icon) {
-            super(text, icon);
-        }
-
-        public Marker(String text, Icon icon, boolean selected) {
-            super(text, icon, selected);
-        }
+//
+//        public Marker(String text, boolean selected) {
+//            super(text, selected);
+//            setUI(new MarkerUI());
+//        }
+//
+//        public Marker(Action a) {
+//            super(a);
+//            setUI(new MarkerUI());
+//        }
+//
+//        public Marker(String text, Icon icon) {
+//            super(text, icon);
+//            setUI(new MarkerUI());
+//        }
+//
+//        public Marker(String text, Icon icon, boolean selected) {
+//            super(text, icon, selected);
+//            setUI(new MarkerUI());
+//        }
         
     }
     /**
@@ -78,10 +87,10 @@ public class CustomLayoutTest extends javax.swing.JFrame {
         testPanel.add(createButton("4"), (Integer) 100);
         
         
-        Marker m = new Marker();
+        Marker m = new Marker("M");
         m.setPreferredSize(new Dimension(35, 35));
         
-        JLabel l = new JLabel();
+        /*JLabel l = new JLabel();
         l.setLayout(new HorizontalLayout());
         l.setPreferredSize(new Dimension(200, 35));
         
@@ -94,9 +103,10 @@ public class CustomLayoutTest extends javax.swing.JFrame {
         
         
         l.add(m);
-        l.add(l2);
+        l.add(l2);*/
         
-        testPanel.add(l);
+        testPanel.add(m);
+        //testPanel.add(l);
     }
     
     public static JButton createButton(String text)
