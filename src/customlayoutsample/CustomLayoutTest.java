@@ -7,9 +7,13 @@ package customlayoutsample;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JSeparator;
+import javax.swing.JToggleButton;
 import javax.swing.SwingConstants;
 
 /**
@@ -18,6 +22,42 @@ import javax.swing.SwingConstants;
  */
 public class CustomLayoutTest extends javax.swing.JFrame {
 
+    private static class Marker extends JToggleButton
+    {
+
+        public Marker() {
+            super();
+        }
+
+        public Marker(Icon icon) {
+            super(icon);
+        }
+
+        public Marker(Icon icon, boolean selected) {
+            super(icon, selected);
+        }
+
+        public Marker(String text) {
+            //super(text);
+        }
+
+        public Marker(String text, boolean selected) {
+            super(text, selected);
+        }
+
+        public Marker(Action a) {
+            super(a);
+        }
+
+        public Marker(String text, Icon icon) {
+            super(text, icon);
+        }
+
+        public Marker(String text, Icon icon, boolean selected) {
+            super(text, icon, selected);
+        }
+        
+    }
     /**
      * Creates new form CustomLayoutSample_
      */
@@ -36,17 +76,35 @@ public class CustomLayoutTest extends javax.swing.JFrame {
         testPanel.add(createButton("2"));
         testPanel.add(createButton("3"));
         testPanel.add(createButton("4"), (Integer) 100);
-        testPanel.add(createButton("5"));
+        
+        
+        Marker m = new Marker();
+        m.setPreferredSize(new Dimension(35, 35));
+        
+        JLabel l = new JLabel();
+        l.setLayout(new HorizontalLayout());
+        l.setPreferredSize(new Dimension(200, 35));
+        
+        JLabel l2 = new JLabel("LABEL");
+        l2.setPreferredSize(new Dimension(200, 35));
+        l2.setVerticalAlignment(SwingConstants.CENTER);
+        l2.setVerticalTextPosition(SwingConstants.CENTER);
+        l2.setHorizontalAlignment(SwingConstants.LEFT);
+        l2.setHorizontalTextPosition(SwingConstants.LEFT);
+        
+        
+        l.add(m);
+        l.add(l2);
+        
+        testPanel.add(l);
     }
     
     public static JButton createButton(String text)
     {
         JButton b = new JButton(text);  //default preferred size of 35 x 28
-//        b.setPreferredSize(new Dimension(35,35));
+        b.setPreferredSize(new Dimension(35,35));
 //        b.setMinimumSize(new Dimension(35,35));
 //        b.setMaximumSize(new Dimension(35,35));
-//        b.setSize(new Dimension(35,35));
-//        b.setVisible(true);
         return b;
     }
 
